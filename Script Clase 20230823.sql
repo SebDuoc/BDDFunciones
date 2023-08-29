@@ -44,13 +44,13 @@ SELECT rutemp, substr(rutemp, 1, length(rutemp) - 1) run_emp,
 from empleado
 ORDER BY rutemp;
 
--- SE REQUIERE ASIGNAR UNA NUEVA CONTRASE—A A LOS EMPLEADOS
--- LA CONTRASE—A DEBE CONSTAR DE LOS TRES PRIMEROS CARACTERES
+-- SE REQUIERE ASIGNAR UNA NUEVA CONTRASE√ëA A LOS EMPLEADOS
+-- LA CONTRASE√ëA DEBE CONSTAR DE LOS TRES PRIMEROS CARACTERES
 -- DEL APELLIDO PATERNO, LOS DOS PRIMEROS CARACTERES DE LA FECHA DE 
 -- INGRESO, SEGUIDOS DE UN PUNTO, LOS CUATRO ULTIMOS CARACTERES DEL
 -- NOMBRE EN MINUSCULAS Y LOS DOS ULTIMOS DIGITOS DEL SUELDO MENOS 2.
 -- ELABORE EL INFORME QUE MUESTRE EL NOMBRE COMPLETO
--- DEL EMPLEADO Y SU CONTRASE—A
+-- DEL EMPLEADO Y SU CONTRASE√ëA
 
 SELECT paterno || ' ' || materno || ' ' || nombre nombre_empleado,
        SUBSTR(paterno, 1, 3) || SUBSTR(fecing, 1, 2) 
@@ -70,6 +70,9 @@ FROM empleado;
 -- LTRIM - RTRIM - TRIM permite quitar los espacios de una cadena 
 SELECT '     ALVAREZ MADARIAGA CARLOTA   '
 FROM DUAL;
+
+-- QUITAR ESPACIOS DATE
+-- FM permite quitar los espacios de una fecha EJ: TO_CHAR(TO_DATE(FECHA_NAC), 'DD "de" FMMonth.'))
 
 --  LPAD -- RPAD PERMITEN RELLENAR UNA CAMPO|EXPRESION CON EL CARACTER QUE SE ESPECIFIQUE
 --  FUNCION(CADENA_POR_RELLENAR, NRO_CARACTERES_A_COMPLETAR, CARACTER_DE_RELLENO)
@@ -113,7 +116,7 @@ from dual;
 SYSDATE  devuelve la fecha del sistema. No requiere argumentos
 MONTHS_BETWEEN devuelve un entero con el numero de meses entre dos fechas
 ADD_MONTHS permite agregar o quitar meses a una fecha. Devuelve la fecha respectiva
-NEXT_DAY Devuelve la fecha del primer dÌa de la semana que es mayor que la fecha ingresada.
+NEXT_DAY Devuelve la fecha del primer d√≠a de la semana que es mayor que la fecha ingresada.
 LAST_DAY devuelve el ultimo dia del mes
 EXTRACT devuelve un entero con el componente de la fecha extraido
 TRUNC/ROUND(FECHA, ['formato']) TRUNCA/REDONDEA UNA FECHA AL ELEMENTO ESPECIFICADO
@@ -153,11 +156,11 @@ FROM DUAL;
     
 -- next_day
 -- next_day(fecha, dia)
--- dia puede ser el dia en castellano o inglÈs 
--- seg˙n el motor o el dia de la semana
+-- dia puede ser el dia en castellano o ingl√©s 
+-- seg√∫n el motor o el dia de la semana
 select sysdate,
        next_day(sysdate, 'VIERNES'),  
-       next_day(sysdate, 'S¡BADO'),  
+       next_day(sysdate, 'S√ÅBADO'),  
        next_day(sysdate, 6)  
 from dual;
 
@@ -168,7 +171,7 @@ SELECT  LAST_DAY('03031980') FROM DUAL;
 
 -- EXTRACT 
 SELECT sysdate,
-       EXTRACT(YEAR FROM SYSDATE) A—O,
+       EXTRACT(YEAR FROM SYSDATE) A√ëO,
        EXTRACT(MONTH FROM SYSDATE) MES,
        EXTRACT(DAY FROM SYSDATE) DIA,
        EXTRACT(DAY FROM SYSDATE) || ' del '
@@ -191,7 +194,7 @@ ALTER SESSION SET nls_date_format='dd/mm/yyyy';
 
 -- EXTRAER LOS COMPONENTES DE LA FECHA (HORA - MINUTO - SEGUNDO)
 SELECT sysdate,
-       EXTRACT(YEAR FROM SYSDATE) A—O,   
+       EXTRACT(YEAR FROM SYSDATE) A√ëO,   
        EXTRACT(month FROM SYSDATE) MES,   
        EXTRACT(day FROM SYSDATE) DIA,
        EXTRACT(HOUR FROM CAST(SYSDATE AS TIMESTAMP)) HORA, 
@@ -336,14 +339,14 @@ CASE
 END
 */
 
--- la empresa, dada la situaciÛn actual, desea otorgar un bono covid a sus empleados,
--- el bono depender· de la oficina en la cual trabaje el empleado. Si el empleado
--- se desempeÒa en la oficina 100, 20% de bono respecto del sueldo; si trabaja en la
+-- la empresa, dada la situaci√≥n actual, desea otorgar un bono covid a sus empleados,
+-- el bono depender√° de la oficina en la cual trabaje el empleado. Si el empleado
+-- se desempe√±a en la oficina 100, 20% de bono respecto del sueldo; si trabaja en la
 -- 110, 30% del sueldo, si trabaja en la 120, 50% del sueldo, no hay bono para los 
 -- demas
 
--- la empresa, dada la situaciÛn actual, desea otorgar un bono covid a sus empleados,
--- el bono depender· del sueldo del empleado. Si el sueldo es mayor a 2000000
+-- la empresa, dada la situaci√≥n actual, desea otorgar un bono covid a sus empleados,
+-- el bono depender√° del sueldo del empleado. Si el sueldo es mayor a 2000000
 -- 20% de bono respecto del sueldo; si sueldo esta entre 1500001 y 2000000
 -- entonces 30% del sueldo, si el sueldo oscila entre 1000000 y 1500000, entonces 
 -- 50% del sueldo, 80% del sueldo en todos los demas casos
